@@ -2,18 +2,18 @@
 
 stylus BEM syntactic sugar
 
-- [Installation](##installation)
-- [Javascript API](##javascript-api)
-  - [Options](###Options)
-- [Using with Webpack](##using-with-webpack)
-- [Using with Gulp](##using-with-gulp)
-- [Examples](##examples)
-  - [Block](###block)
-  - [Element](###element)
-  - [Modifier](###modifier)
-  - [State (Auxiliary prefix)](###state 'auxiliary-prefix')
-  - [Same selector](###same-selector)
-  - [Nesting rules](###nesting-rules)
+- [Installation](#installation)
+- [Javascript API](#javascript-api)
+  - [Options](#Options)
+- [Using with Webpack](#using-with-webpack)
+- [Using with Gulp](#using-with-gulp)
+- [Examples](#examples)
+  - [Block](#block)
+  - [Element](#element)
+  - [Modifier](#modifier)
+  - [State (optional prefix)](#State (optional prefix))
+  - [Same selector](#same-selector)
+  - [Nesting rules](#nesting-rules)
 
 ## Installation
 
