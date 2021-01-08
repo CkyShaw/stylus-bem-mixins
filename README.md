@@ -28,27 +28,27 @@ var stylus = require('stylus')
 var stylusBemMixins = require('stylus-bem-mixins')
 
 var str = `
-	@import 'node_modules/stylus-bem-mixins/index.styl'
+  @import 'node_modules/stylus-bem-mixins/index.styl'
 
-	+b(button) {
-		content: 'button';
-		
-		+e(icon) {
-			content: 'icon';
-			
-			+m(small) {
-				content: 'small';
-			}
-		}
-	}
+  +b(button) {
+    content: 'button';
+    
+    +e(icon) {
+      content: 'icon';
+      
+      +m(small) {
+        content: 'small';
+      }
+    }
+  }
 `
 
 stylus(str)
-	.use(stylusBemMixins())
-	.render(function(err, css) {
-		if (err) throw err
-		console.log(css)
-	})
+  .use(stylusBemMixins())
+  .render(function(err, css) {
+    if (err) throw err
+    console.log(css)
+  })
 ```
 
 ### Options:
@@ -57,10 +57,10 @@ You can custom separator
 
 ```javascript
 var option = {
-	namespace: 'my', // default ''
-	elementSeparator: '__', // default '__'
-	modifierSeparator: '--', // default '--'
-	statePrefix: 'is-' // default 'is-'
+  namespace: 'my', // default ''
+  elementSeparator: '__', // default '__'
+  modifierSeparator: '--', // default '--'
+  statePrefix: 'is-' // default 'is-'
 }
 stylusBemMixins(option)
 ```
@@ -78,34 +78,34 @@ Custom separator in webpack.config.js
 
 ```javascript
 module.exports = {
-	module: {
-		rules: [
-			{
-				test: /\.styl$/,
-				use: [
-					{
-						loader: 'style-loader' // creates style nodes from JS strings
-					},
-					{
-						loader: 'css-loader' // translates CSS into CommonJS
-					},
-					{
-						loader: 'stylus-loader', // compiles Stylus to CSS
-						options: {
-							stylusOptions: {
-								use: [
-									require('stylus-bem-mixins')({
-										namespace: 'my'
-									})
-								],
-								import: ['stylus-bem-mixins']
-							}
-						}
-					}
-				]
-			}
-		]
-	}
+  module: {
+    rules: [
+      {
+        test: /\.styl$/,
+        use: [
+          {
+            loader: 'style-loader' // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader' // translates CSS into CommonJS
+          },
+          {
+            loader: 'stylus-loader', // compiles Stylus to CSS
+            options: {
+              stylusOptions: {
+                use: [
+                  require('stylus-bem-mixins')({
+                    namespace: 'my'
+                  })
+                ],
+                import: ['stylus-bem-mixins']
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -113,18 +113,18 @@ In Vue CLI
 
 ```javascript
 module.exports = {
-	css: {
-		loaderOptions: {
-			stylus: {
-				use: [
-					require('stylus-bem-mixins')({
-						namespace: 'my'
-					})
-				],
-				import: ['stylus-bem-mixins']
-			}
-		}
-	}
+  css: {
+    loaderOptions: {
+      stylus: {
+        use: [
+          require('stylus-bem-mixins')({
+            namespace: 'my'
+          })
+        ],
+        import: ['stylus-bem-mixins']
+      }
+    }
+  }
 }
 ```
 
@@ -135,13 +135,13 @@ module.exports = {
 const { series, src, dest } = require('gulp')
 const stylus = require('gulp-stylus')
 const stylusBemMixins = require('stylus-bem-mixins')({
-	namespace: 'my'
+  namespace: 'my'
 })
 
 function compileFile() {
-	return src('./test.styl')
-		.pipe(stylus({ use: stylusBemMixins }))
-		.pipe(dest('./'))
+  return src('./test.styl')
+    .pipe(stylus({ use: stylusBemMixins }))
+    .pipe(dest('./'))
 }
 series(compileFile)
 // ...
@@ -155,7 +155,7 @@ Namespace is "my", other settings are default
 
 ```stylus
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 }
 ```
 
@@ -163,7 +163,7 @@ Compiles to:
 
 ```css
 .my-form {
-	background: #ddd;
+  background: #ddd;
 }
 ```
 
@@ -171,27 +171,27 @@ Compiles to:
 
 ```stylus
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+e(input) {
-		width: 200px;
-	}
+  +e(input) {
+    width: 200px;
+  }
 
-    +m(danger) {
-		border: 1px solid #f00;
+  +m(danger) {
+    border: 1px solid #f00;
 
-		+e(icon) {
-			color: #f00;
-		}
-	}
+    +e(icon) {
+      color: #f00;
+    }
+  }
 
-    +when(loading) {
-		color: #666;
+  +when(loading) {
+    color: #666;
 
-		+e(input) {
-			border-color: #ccc;
-		}
-	}
+    +e(input) {
+      border-color: #ccc;
+    }
+  }
 }
 ```
 
@@ -199,22 +199,22 @@ Compiles to:
 
 ```css
 .my-form {
-	background: #ddd;
+  background: #ddd;
 }
 .my-form__input {
-	width: 200px;
+  width: 200px;
 }
 .my-form--danger {
-	border: 1px solid #f00;
+  border: 1px solid #f00;
 }
 .my-form--danger .my-form__icon {
-	color: #f00;
+  color: #f00;
 }
 .my-form.is-loading {
-	color: #666;
+  color: #666;
 }
 .my-form.is-loading .my-form__input {
-	border-color: #ccc;
+  border-color: #ccc;
 }
 ```
 
@@ -222,31 +222,31 @@ Compiles to:
 
 ```stylus
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+m(danger) {
-		border: 1px solid #f00;
-	}
+  +m(danger) {
+    border: 1px solid #f00;
+  }
 
-    +e(button) {
-		border-radius: 4px;
+  +e(button) {
+    border-radius: 4px;
 
-		+m(small) {
-			width: 150px;
-		}
-	}
+    +m(small) {
+      width: 150px;
+    }
+  }
 
-    +when(disabled) {
-		color: #999;
+  +when(disabled) {
+    color: #999;
 
-		+e(select) {
-			border-color: #666;
+    +e(select) {
+      border-color: #666;
 
-			+m(small) {
-				font-size: 12px;
-			}
-		}
-	}
+      +m(small) {
+        font-size: 12px;
+      }
+    }
+  }
 }
 ```
 
@@ -254,25 +254,25 @@ Compiles to:
 
 ```css
 .my-form {
-	background: #ddd;
+  background: #ddd;
 }
 .my-form--danger {
-	border: 1px solid #f00;
+  border: 1px solid #f00;
 }
 .my-form__button {
-	border-radius: 4px;
+  border-radius: 4px;
 }
 .my-form__button--small {
-	width: 150px;
+  width: 150px;
 }
 .my-form.is-disabled {
-	color: #999;
+  color: #999;
 }
 .my-form.is-disabled .my-form__select {
-	border-color: #666;
+  border-color: #666;
 }
 .my-form.is-disabled .my-form__select--small {
-	font-size: 12px;
+  font-size: 12px;
 }
 ```
 
@@ -282,31 +282,31 @@ You will use it in some cases, such as getting dom elements
 
 ```stylus
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+when(loading) {
-		color: #666;
-	}
+  +when(loading) {
+    color: #666;
+  }
 
-    +e(button) {
-		border-radius: 4px;
+  +e(button) {
+    border-radius: 4px;
 
-		+when(disabled) {
-			color: #666;
-		}
-	}
+    +when(disabled) {
+      color: #666;
+    }
+  }
 
-    +m(danger) {
-		border: 1px solid #f00;
+  +m(danger) {
+    border: 1px solid #f00;
 
-		+e(input) {
-			border-color: #f0a;
+    +e(input) {
+      border-color: #f0a;
 
-			+when(disabled) {
-				color: #999;
-			}
-		}
-	}
+      +when(disabled) {
+        color: #999;
+      }
+    }
+  }
 }
 ```
 
@@ -314,25 +314,25 @@ Compiles to:
 
 ```css
 .my-form {
-	background: #ddd;
+  background: #ddd;
 }
 .my-form.is-loading {
-	color: #666;
+  color: #666;
 }
 .my-form__button {
-	border-radius: 4px;
+  border-radius: 4px;
 }
 .my-form__button.is-disabled {
-	color: #666;
+  color: #666;
 }
 .my-form--danger {
-	border: 1px solid #f00;
+  border: 1px solid #f00;
 }
 .my-form--danger .my-form__input {
-	border-color: #f0a;
+  border-color: #f0a;
 }
 .my-form--danger .my-form__input.is-disabled {
-	color: #999;
+  color: #999;
 }
 ```
 
@@ -342,15 +342,15 @@ Elements and Modifier can write multiple same selectors
 
 ```stylus
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+e(input, button) {
-		width: 200px;
-	}
+  +e(input, button) {
+    width: 200px;
+  }
 
-	+m(danger, success) {
-		font-weight: bold;
-	}
+  +m(danger, success) {
+    font-weight: bold;
+  }
 }
 ```
 
@@ -358,15 +358,15 @@ Compiles to:
 
 ```css
 .my-form {
-	background: #ddd;
+  background: #ddd;
 }
 .my-form__input,
 .my-form__button {
-	width: 200px;
+  width: 200px;
 }
 .my-form--danger,
 .my-form--success {
-	font-weight: bold;
+  font-weight: bold;
 }
 ```
 
@@ -374,15 +374,15 @@ Modifiercan nest in elements :
 
 ```stylus
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+e(input, button) {
-		width: 200px;
+  +e(input, button) {
+    width: 200px;
 
-		+m(danger, success) {
-			font-weight: bold;
-		}
-	}
+    +m(danger, success) {
+      font-weight: bold;
+    }
+  }
 }
 ```
 
@@ -390,17 +390,17 @@ Compiles to:
 
 ```css
 .my-form {
-	background: #ddd;
+  background: #ddd;
 }
 .my-form__input,
 .my-form__button {
-	width: 200px;
+  width: 200px;
 }
 .my-form__input--danger,
 .my-form__button--danger,
 .my-form__input--success,
 .my-form__button--success {
-	font-weight: bold;
+  font-weight: bold;
 }
 ```
 
@@ -408,15 +408,15 @@ Elements can nest in modifier:
 
 ```stylus
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+m(danger, success) {
-		font-weight: bold;
+  +m(danger, success) {
+    font-weight: bold;
 
-		+e(input, button) {
-			width: 200px;
-		}
-	}
+    +e(input, button) {
+      width: 200px;
+    }
+  }
 }
 ```
 
@@ -424,17 +424,17 @@ Compiles to:
 
 ```css
 .my-form {
-	background: #ddd;
+  background: #ddd;
 }
 .my-form--danger,
 .my-form--success {
-	font-weight: bold;
+  font-weight: bold;
 }
 .my-form--danger .my-form__input,
 .my-form--success .my-form__input,
 .my-form--danger .my-form__button,
 .my-form--success .my-form__button {
-	width: 200px;
+  width: 200px;
 }
 ```
 
@@ -459,11 +459,11 @@ Examples:
 /*---------------------- B > E ----------------------*/
 /*
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+e(input) {
-		width: 200px;
-	}
+  +e(input) {
+    width: 200px;
+  }
 }
 */
 .my-form {
@@ -475,15 +475,15 @@ Examples:
 /*---------------------- B > E > M ----------------------*/
 /*
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+e(button) {
-		border-radius: 4px;
+  +e(button) {
+    border-radius: 4px;
 
-		+m(small) {
-			width: 150px;
-		}
-	}
+    +m(small) {
+      width: 150px;
+    }
+  }
 }
 */
 .my-form {
@@ -498,15 +498,15 @@ Examples:
 /*---------------------- B > E > when ----------------------*/
 /*
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+e(button) {
-		border-radius: 4px;
+  +e(button) {
+    border-radius: 4px;
 
-		+when(disabled) {
-			color: #666;
-		}
-	}
+    +when(disabled) {
+      color: #666;
+    }
+  }
 }
 */
 .my-form {
@@ -521,11 +521,11 @@ Examples:
 /*---------------------- B > M ----------------------*/
 /*
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+m(danger) {
-		border: 1px solid #f00;
-	}
+  +m(danger) {
+    border: 1px solid #f00;
+  }
 }
 */
 .my-form {
@@ -537,15 +537,15 @@ Examples:
 /*---------------------- B > M > E ----------------------*/
 /*
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+m(danger) {
-		border: 1px solid #f00;
+  +m(danger) {
+    border: 1px solid #f00;
 
-		+e(icon) {
-			color: #f00;
-		}
-	}
+    +e(icon) {
+      color: #f00;
+    }
+  }
 }
 */
 .my-form {
@@ -560,19 +560,19 @@ Examples:
 /*---------------------- B > M > E > when ----------------------*/
 /*
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+m(danger) {
-		border: 1px solid #f00;
+  +m(danger) {
+    border: 1px solid #f00;
 
-		+e(input) {
-			border-color: #f0a;
+    +e(input) {
+      border-color: #f0a;
 
-			+when(disabled) {
-				color: #999;
-			}
-		}
-	}
+      +when(disabled) {
+        color: #999;
+      }
+    }
+  }
 }
 */
 .my-form {
@@ -590,11 +590,11 @@ Examples:
 /*---------------------- B > when ----------------------*/
 /*
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+when(loading) {
-		color: #666;
-	}
+  +when(loading) {
+    color: #666;
+  }
 }
 */
 .my-form {
@@ -606,15 +606,15 @@ Examples:
 /*---------------------- B > when > E ----------------------*/
 /*
 +b(form) {
-	background: #ddd;
+  background: #ddd;
 
-	+when(loading) {
-		color: #666;
+  +when(loading) {
+    color: #666;
 
-		+e(input) {
-			border-color: #ccc;
-		}
-	}
+    +e(input) {
+      border-color: #ccc;
+    }
+  }
 }
 */
 .my-form {
@@ -629,19 +629,19 @@ Examples:
 /*---------------------- B > when > E > M ----------------------*/
 /*
 +b(form) {
-	background: #ddd
+  background: #ddd
 
-	+when(disabled) {
-		color: #999;
+  +when(disabled) {
+    color: #999;
 
-		+e(select) {
-			border-color: #666;
+    +e(select) {
+      border-color: #666;
 
-			+m(small) {
-				font-size: 12px;
-			}
-		}
-	}
+      +m(small) {
+        font-size: 12px;
+      }
+    }
+  }
 }
 */
 .my-form {
