@@ -276,9 +276,9 @@ Compiles to:
 }
 ```
 
-### State (optional prefix)
+### State
 
-You will use it in some cases, such as getting dom elements
+This is optional prefix, you will use it in some cases, such as getting dom elements.
 
 ```stylus
 +b(form) {
