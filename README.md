@@ -11,7 +11,7 @@ stylus BEM syntactic sugar
   - [Block](#block)
   - [Element](#element)
   - [Modifier](#modifier)
-  - [State (optional prefix)](#State (optional prefix))
+  - [State (optional prefix)](#State)
   - [Same selector](#same-selector)
   - [Nesting rules](#nesting-rules)
 
