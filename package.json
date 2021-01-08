@@ -1,6 +1,6 @@
 {
 	"name": "stylus-bem-mixins",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "stylus BEM syntactic sugar",
 	"repository": {
 		"type": "git",
