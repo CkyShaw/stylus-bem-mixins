@@ -1,0 +1,99 @@
+
+$namespace ?= '';
+$element-separator ?= '__';
+$modifier-separator ?= '--';
+$state-prefix ?= 'is-';
+
+use('./plugin/find-block.js')
+use('./plugin/hit-all-special-nest-rule.js')
+use('./plugin/bem-validate.js')
+
+$BEM = {
+	ns: $namespace,
+	es: $element-separator,
+	ms: $modifier-separator,
+	sp: $state-prefix
+}
+
+b($block) {
+	calls = join('-', called-from)
+	
+	bem-validate(calls, selector(), 'b')
+	
+	if($namespace) {
+		$B = '.' + $namespace+'-'+$block
+	} else {
+		$B = '.' + $block
+	}
+	
+	/{$B} {
+		{block}
+	}
+}
+
+get-parent-block($nested = false) {
+	calls = join('-', called-from)
+	find-block(calls, selector(), $nested)
+}
+
+e($element) {
+	calls = join('-', called-from)
+	
+	bem-validate(calls, selector(), 'e')
+	
+	$currentSelector = "";
+	$descendant = ''
+	$parentBlock = get-parent-block()
+	
+	if hit-all-special-nest-rule(calls, selector(), $BEM) {
+		$descendant = '& '
+	}
+
+	for $unit in arguments{
+		$currentSelector += $descendant + $parentBlock + $element-separator + $unit + ((length(arguments) > 1 && $unit != arguments[length(arguments)-1]) ? ',': '') 
+	}
+	
+	/{$currentSelector} {
+		{block}
+	}
+}
+
+m($modifier) {
+	calls = join('-', called-from)
+	
+	bem-validate(calls, selector(), 'm')
+	
+	$currentSelector = ""
+	
+	for $unit in arguments {
+		$currentSelector += '&'+ $modifier-separator + $unit + ((length(arguments) > 1 && $unit != arguments[length(arguments)-1]) ? ',': '') 
+	}
+	
+	/{$currentSelector} {
+		{block}
+	}
+}
+
+when($state) {
+	calls = join('-', called-from)
+	
+	bem-validate(calls, selector(), 'when')
+	
+	$currentSelector = '&.' + $state-prefix + $state
+  	
+	/{$currentSelector} {
+		{block}
+	}
+}
+
+pseudo($pseudo) {
+	&:{$pseudo} {
+		{block}
+	}
+}
+
+pre($selector) {
+	{$selector} {
+		{block}
+	}
+}

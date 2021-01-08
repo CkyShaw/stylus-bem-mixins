@@ -1,0 +1,36 @@
+{
+	"name": "stylus-bem-mixins",
+	"version": "1.0.0",
+	"description": "stylus BEM syntactic sugar",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/CkyShaw/stylus-bem-mixins.git"
+	},
+	"main": "lib/index.js",
+	"license": "MIT",
+	"files": [
+		"lib",
+		"index.styl"
+	],
+	"scripts": {
+		"dev": "parcel serve ./examples/index.html",
+		"build": "parcel build ./examples/index.html",
+		"prettier": "prettier --write \"**/**/*.{js,jsx,ts,json,vue,css,less,scss,md,html}\"",
+		"compile": "gulp build --gulpfile test/compile.js",
+		"test:jsapi": "node test/jsapi.js"
+	},
+	"author": "xieqixuan <xie_qixuan@163.com>",
+	"keywords": [
+		"stylus",
+		"bem",
+		"mixins"
+	],
+	"devDependencies": {
+		"@parcel/transformer-stylus": "^2.0.0-alpha.3",
+		"gulp": "^4.0.2",
+		"gulp-stylus": "^2.7.0",
+		"parcel": "^2.0.0-beta.1",
+		"prettier": "^2.2.1",
+		"stylus": "^0.54.8"
+	}
+}

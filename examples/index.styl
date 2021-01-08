@@ -1,0 +1,30 @@
+@import '../index.styl'
+
+square(px, c) {
+	width: px;
+	height: @width;
+	background: c;
+}
+#app {
+	display: flex;
+}
++b(block1) {
+	square(800px, #0af)
+	
+	+e(element) {
+		square(300px, #fa0)
+		
+		+m(modifier) {
+			square(300px, #f0a)
+		}
+	}
+}
++b(block2) {
+	+m(modifier) {
+		square(800px, #f0a)
+	}
+	
+	+e(element) {
+		square(300px, #fa0)
+	}
+}

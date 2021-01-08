@@ -1,0 +1,33 @@
+// https://stylus-lang.com/try.html
+
+@import 'stylus-bem-mixins';
+
+/*	
+	[ 'B', 'E' ] √
+	[ 'B', 'M' ] √
+	[ 'B', 'when' ] √
+
+	[ 'B', 'E', 'M',] √
+	[ 'B', 'M','E' ] √
+
+	[ 'B', 'E', 'when' ] √
+	[ 'B', 'when', 'E' ] √
+
+	[ 'B', 'M', 'E', 'when' ] √
+	[ 'B', 'when', 'E', 'M' ] √
+
+*/
+
+/*--------------------------------------------*/
+
++b(form) {
+	background: #ddd;
+	
+	+e(input, button) {
+		width: 200px;
+	}
+	
+	+m(danger, success) {
+		font-weight: bold;
+	}
+}

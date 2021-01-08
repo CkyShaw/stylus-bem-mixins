@@ -1,0 +1,256 @@
+// https://stylus-lang.com/try.html
+
+@import 'stylus-bem-mixins';
+
+/*	
+	[ 'B', 'E' ] √
+	[ 'B', 'M' ] √
+	[ 'B', 'when' ] √
+
+	[ 'B', 'E', 'M',] √
+	[ 'B', 'M','E' ] √
+
+	[ 'B', 'E', 'when' ] √
+	[ 'B', 'when', 'E' ] √
+
+	[ 'B', 'M', 'E', 'when' ] √
+	[ 'B', 'when', 'E', 'M' ] √
+
+*/
+
+/*---------------------- B > E ----------------------*/
+
+/*
++b(form) {
+	background: #ddd;
+	
+	+e(input) {
+		width: 200px;
+	}
+}
+*/
++b(form) {
+	background: #ddd;
+	
+	+e(input) {
+		width: 200px;
+	}
+}
+
+/*---------------------- B > E > M ----------------------*/
+
+/*
++b(form) {
+	background: #ddd;
+	
+	+e(button) {
+		border-radius: 4px;
+		
+		+m(small) {
+			width: 150px;
+		}
+	}
+}
+*/
++b(form) {
+	background: #ddd;
+	
+	+e(button) {
+		border-radius: 4px;
+		
+		+m(small) {
+			width: 150px;
+		}
+	}
+}
+
+/*---------------------- B > E > when ----------------------*/
+
+/*
++b(form) {
+	background: #ddd;
+	
+	+e(button) {
+		border-radius: 4px;
+		
+		+when(disabled) {
+			color: #666;
+		}
+	}
+}
+*/
++b(form) {
+	background: #ddd;
+	
+	+e(button) {
+		border-radius: 4px;
+		
+		+when(disabled) {
+			color: #666;
+		}
+	}
+}
+
+/*---------------------- B > M ----------------------*/
+
+/*	
++b(form) {
+	background: #ddd;
+	
+	+m(danger) {
+		border: 1px solid #f00;
+	}
+}
+*/
++b(form) {
+	background: #ddd;
+	
+	+m(danger) {
+		border: 1px solid #f00;
+	}
+}
+
+/*---------------------- B > M > E ----------------------*/
+
+/*
++b(form) {
+	background: #ddd;
+
+	+m(danger) {
+		border: 1px solid #f00;
+
+		+e(icon) {
+			color: #f00;
+		}
+	}
+}
+*/
++b(form) {
+	background: #ddd;
+
+	+m(danger) {
+		border: 1px solid #f00;
+
+		+e(icon) {
+			color: #f00;
+		}
+	}
+}
+
+/*---------------------- B > M > E > when ----------------------*/
+
+/*
++b(form) {
+	background: #ddd;
+
+	+m(danger) {
+		border: 1px solid #f00;
+
+		+e(input) {
+			border-color: #f0a;
+			
+			+when(disabled) {
+				color: #999;
+			}
+		}
+	}
+}
+*/
++b(form) {
+	background: #ddd;
+
+	+m(danger) {
+		border: 1px solid #f00;
+
+		+e(input) {
+			border-color: #f0a;
+			
+			+when(disabled) {
+				color: #999;
+			}
+		}
+	}
+}
+
+/*---------------------- B > when ----------------------*/
+
+/*
++b(form) {
+	background: #ddd;
+	
+	+when(loading) {
+		color: #666;
+	}
+}
+*/
++b(form) {
+	background: #ddd;
+	
+	+when(loading) {
+		color: #666;
+	}
+}
+
+/*---------------------- B > when > E ----------------------*/
+
+/*
++b(form) {
+	background: #ddd;
+	
+	+when(loading) {
+		color: #666;
+		
+		+e(input) {
+			border-color: #ccc;
+		}
+	}
+}
+*/
++b(form) {
+	background: #ddd;
+	
+	+when(loading) {
+		color: #666;
+		
+		+e(input) {
+			border-color: #ccc;
+		}
+	}
+}
+
+/*---------------------- B > when > E > M ----------------------*/
+
+/*
++b(form) {
+	background: #ddd
+
+	+when(disabled) {
+		color: #999;
+
+		+e(select) {
+			border-color: #666;
+
+			+m(small) {
+				font-size: 12px;
+			}
+		}
+	}
+}
+*/
++b(form) {
+	background: #ddd
+
+	+when(disabled) {
+		color: #999;
+
+		+e(select) {
+			border-color: #666;
+
+			+m(small) {
+				font-size: 12px;
+			}
+		}
+	}
+}
+
+/*--------------------------------------------*/

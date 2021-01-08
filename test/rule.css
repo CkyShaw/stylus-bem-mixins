@@ -1,0 +1,216 @@
+/*	
+	[ 'B', 'E' ] √
+	[ 'B', 'M' ] √
+	[ 'B', 'when' ] √
+
+	[ 'B', 'E', 'M',] √
+	[ 'B', 'M','E' ] √
+
+	[ 'B', 'E', 'when' ] √
+	[ 'B', 'when', 'E' ] √
+
+	[ 'B', 'M', 'E', 'when' ] √
+	[ 'B', 'when', 'E', 'M' ] √
+
+*/
+/*---------------------- B > E ----------------------*/
+/*
++b(form) {
+	background: #ddd;
+	
+	+e(input) {
+		width: 200px;
+	}
+}
+*/
+.my-form {
+	background: #ddd;
+}
+.my-form__input {
+	width: 200px;
+}
+/*---------------------- B > E > M ----------------------*/
+/*
++b(form) {
+	background: #ddd;
+	
+	+e(button) {
+		border-radius: 4px;
+		
+		+m(small) {
+			width: 150px;
+		}
+	}
+}
+*/
+.my-form {
+	background: #ddd;
+}
+.my-form__button {
+	border-radius: 4px;
+}
+.my-form__button--small {
+	width: 150px;
+}
+/*---------------------- B > E > when ----------------------*/
+/*
++b(form) {
+	background: #ddd;
+	
+	+e(button) {
+		border-radius: 4px;
+		
+		+when(disabled) {
+			color: #666;
+		}
+	}
+}
+*/
+.my-form {
+	background: #ddd;
+}
+.my-form__button {
+	border-radius: 4px;
+}
+.my-form__button.is-disabled {
+	color: #666;
+}
+/*---------------------- B > M ----------------------*/
+/*	
++b(form) {
+	background: #ddd;
+	
+	+m(danger) {
+		border: 1px solid #f00;
+	}
+}
+*/
+.my-form {
+	background: #ddd;
+}
+.my-form--danger {
+	border: 1px solid #f00;
+}
+/*---------------------- B > M > E ----------------------*/
+/*
++b(form) {
+	background: #ddd;
+
+	+m(danger) {
+		border: 1px solid #f00;
+
+		+e(icon) {
+			color: #f00;
+		}
+	}
+}
+*/
+.my-form {
+	background: #ddd;
+}
+.my-form--danger {
+	border: 1px solid #f00;
+}
+.my-form--danger .my-form__icon {
+	color: #f00;
+}
+/*---------------------- B > M > E > when ----------------------*/
+/*
++b(form) {
+	background: #ddd;
+
+	+m(danger) {
+		border: 1px solid #f00;
+
+		+e(input) {
+			border-color: #f0a;
+			
+			+when(disabled) {
+				color: #999;
+			}
+		}
+	}
+}
+*/
+.my-form {
+	background: #ddd;
+}
+.my-form--danger {
+	border: 1px solid #f00;
+}
+.my-form--danger .my-form__input {
+	border-color: #f0a;
+}
+.my-form--danger .my-form__input.is-disabled {
+	color: #999;
+}
+/*---------------------- B > when ----------------------*/
+/*
++b(form) {
+	background: #ddd;
+	
+	+when(loading) {
+		color: #666;
+	}
+}
+*/
+.my-form {
+	background: #ddd;
+}
+.my-form.is-loading {
+	color: #666;
+}
+/*---------------------- B > when > E ----------------------*/
+/*
++b(form) {
+	background: #ddd;
+	
+	+when(loading) {
+		color: #666;
+		
+		+e(input) {
+			border-color: #ccc;
+		}
+	}
+}
+*/
+.my-form {
+	background: #ddd;
+}
+.my-form.is-loading {
+	color: #666;
+}
+.my-form.is-loading .my-form__input {
+	border-color: #ccc;
+}
+/*---------------------- B > when > E > M ----------------------*/
+/*
++b(form) {
+	background: #ddd
+
+	+when(disabled) {
+		color: #999;
+
+		+e(select) {
+			border-color: #666;
+
+			+m(small) {
+				font-size: 12px;
+			}
+		}
+	}
+}
+*/
+.my-form {
+	background: #ddd;
+}
+.my-form.is-disabled {
+	color: #999;
+}
+.my-form.is-disabled .my-form__select {
+	border-color: #666;
+}
+.my-form.is-disabled .my-form__select--small {
+	font-size: 12px;
+}
+/*--------------------------------------------*/
