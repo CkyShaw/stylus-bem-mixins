@@ -4,7 +4,7 @@ stylus BEM syntactic sugar
 
 - [Installation](#installation)
 - [Javascript API](#javascript-api)
-  - [Options](#Options)
+  - [Options](#options)
 - [Using with Webpack](#using-with-webpack)
 - [Using with Gulp](#using-with-gulp)
 - [Examples](#examples)
